@@ -5,7 +5,6 @@ import CaseStudySection from "@/components/case-study/CaseStudySection";
 import MetricCallout, {
   MetricRow,
 } from "@/components/case-study/MetricCallout";
-import VisualPlaceholder from "@/components/case-study/VisualPlaceholder";
 import StepList from "@/components/case-study/StepList";
 
 export const metadata: Metadata = {
@@ -20,8 +19,6 @@ const SUMMARY =
 const META = [
   { label: "Role", value: "UX — research through interface" },
   { label: "Context", value: "Real client project at DHi Design" },
-  { label: "Timeline", value: "[TBD]" },
-  { label: "Tools", value: "[TBD]" },
 ];
 
 const MOVES = [
@@ -205,11 +202,6 @@ export default function UxCaseStudyPage() {
             page instead of gating it behind one.
           </strong>
         </p>
-        <VisualPlaceholder
-          label="Three-persona summary"
-          ratio="16 / 9"
-          note="Unbranded"
-        />
       </CaseStudySection>
 
       <CaseStudySection index="04" heading="The reframe">
@@ -231,11 +223,6 @@ export default function UxCaseStudyPage() {
           Every one is tied to a research finding, not an aesthetic preference.
         </p>
         <StepList steps={MOVES} />
-        <VisualPlaceholder
-          label="Product page + ReStock dashboard mockups"
-          ratio="16 / 10"
-          note="Unbranded"
-        />
         <p>
           That’s the through-line I’m proudest of: I didn’t just redesign a
           catalogue. I identified where the company was quietly losing customers
@@ -267,11 +254,6 @@ export default function UxCaseStudyPage() {
             label="Heuristics I scored a 4, not a 5 — power-user efficiency and depth of help documentation — written up honestly as priority directions for a v2, not quietly rounded up."
           />
         </MetricRow>
-        <VisualPlaceholder
-          label="Heuristic benchmark chart"
-          ratio="4 / 3"
-          note="Unbranded"
-        />
       </CaseStudySection>
 
       <CaseStudySection index="07" heading="The part that taught me the most">

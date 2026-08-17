@@ -8,7 +8,7 @@ import styles from "./page.module.css";
  * No backend yet: submitting composes a mailto: draft so the form is honest
  * about where the message goes rather than silently discarding it.
  */
-const RECIPIENT = "hello@example.com";
+const RECIPIENT = "maheshmaske840@gmail.com";
 
 export default function ContactForm() {
   const [name, setName] = useState("");

@@ -10,10 +10,8 @@ export const metadata: Metadata = {
     "Freelance or full-time — if it needs to convert, i want to hear about it.",
 };
 
-// Placeholders — swap for the real handles before launch.
-const EMAIL = "hello@example.com";
-const LINKEDIN = "https://www.linkedin.com/in/your-handle";
-const RESUME = "/resume.pdf";
+const EMAIL = "maheshmaske840@gmail.com";
+const LINKEDIN = "https://www.linkedin.com/in/mahesh-maske-069189244";
 
 export default function ContactPage() {
   return (
@@ -44,13 +42,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
               >
                 <span className={styles.linkLabel}>LinkedIn</span>
-                <HoverUnderline>/in/your-handle ↗</HoverUnderline>
-              </a>
-            </li>
-            <li>
-              <a className={styles.link} href={RESUME} download>
-                <span className={styles.linkLabel}>Resume</span>
-                <HoverUnderline>Download PDF ↓</HoverUnderline>
+                <HoverUnderline>/in/mahesh-maske-069189244 ↗</HoverUnderline>
               </a>
             </li>
           </ul>

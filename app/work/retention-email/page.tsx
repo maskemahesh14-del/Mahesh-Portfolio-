@@ -5,7 +5,6 @@ import CaseStudySection from "@/components/case-study/CaseStudySection";
 import MetricCallout, {
   MetricRow,
 } from "@/components/case-study/MetricCallout";
-import VisualPlaceholder from "@/components/case-study/VisualPlaceholder";
 import StepList from "@/components/case-study/StepList";
 
 export const metadata: Metadata = {
@@ -23,8 +22,6 @@ const META = [
     value: "Email + WhatsApp creative — strategy set with the wider team",
   },
   { label: "Scope", value: "Three D2C brands — skincare, fashion, supplements" },
-  { label: "Timeline", value: "[TBD]" },
-  { label: "Tools", value: "[TBD]" },
 ];
 
 const LADDER = [
@@ -157,11 +154,6 @@ export default function RetentionEmailCaseStudyPage() {
             label="Day-30 replenishment WhatsApp campaigns outperformed email — the finding that reshaped how I designed for channel across the rest of the work."
           />
         </MetricRow>
-        <VisualPlaceholder
-          label="Skincare case card + email/WhatsApp creative"
-          ratio="16 / 10"
-          note="Brand-stripped"
-        />
       </CaseStudySection>
 
       <CaseStudySection
@@ -187,11 +179,6 @@ export default function RetentionEmailCaseStudyPage() {
           <MetricCallout value="3.5×" label="Launch performance." />
           <MetricCallout value="+31%" label="Repeat rate over 90 days." />
         </MetricRow>
-        <VisualPlaceholder
-          label="Fashion case card"
-          ratio="16 / 9"
-          note="Brand-stripped"
-        />
 
         <h3>Supplements: community-led retention</h3>
         <p>
@@ -216,11 +203,6 @@ export default function RetentionEmailCaseStudyPage() {
             label="Community-attributed revenue."
           />
         </MetricRow>
-        <VisualPlaceholder
-          label="Supplements case card"
-          ratio="16 / 9"
-          note="Brand-stripped"
-        />
       </CaseStudySection>
 
       <CaseStudySection index="04" heading="Why this is in my portfolio">

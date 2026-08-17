@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 import CaseStudySection from "@/components/case-study/CaseStudySection";
 import StepList from "@/components/case-study/StepList";
-import VisualPlaceholder from "@/components/case-study/VisualPlaceholder";
 import DecodeText from "@/components/DecodeText";
 import HoverUnderline from "@/components/HoverUnderline";
 import { TransitionLink } from "@/components/PixelTransition";
@@ -48,13 +47,8 @@ const HOW_I_WORK = [
   },
 ];
 
-const SKILLS = ["Email", "Web/UX", "Amazon A+", "Motion", "Copy"];
-const TOOLS = [
-  "Figma",
-  "Hand-coded HTML/CSS",
-  "After Effects",
-  "AI image/video",
-];
+const SKILLS = ["UX design", "Email design", "Gen AI"];
+const TOOLS = ["Figma", "After Effects", "AI image/video"];
 
 export default function AboutPage() {
   return (
@@ -97,7 +91,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <VisualPlaceholder label="Portrait" ratio="4 / 5" note="Photo" />
         </CaseStudySection>
 
         <CaseStudySection index="03" heading="Skills and tools">

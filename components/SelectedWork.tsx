@@ -26,19 +26,17 @@ type WorkEntry = {
   href: string;
 };
 
-/** Metric-led: each exists to prove a design decision moved a real number. */
+/**
+ * Metric-led: each exists to prove a design decision moved a real number.
+ * Only the email-design case study is featured for now — /work/ux still
+ * exists but is deliberately unlisted here until its visuals are finished.
+ */
 const CASE_STUDIES: WorkEntry[] = [
   {
     metric: "₹89L program revenue · +41% cross-category",
     title: "Retention email & WhatsApp design",
     role: "Email + WhatsApp creative across 8 lifecycle flows, 3 D2C brands.",
     href: "/work/retention-email",
-  },
-  {
-    metric: "Category-leading on 3 B2B heuristics no competitor wins",
-    title: "Full-stack UX redesign",
-    role: "Research to interface for a B2B industrial supplier.",
-    href: "/work/ux",
   },
 ];
 

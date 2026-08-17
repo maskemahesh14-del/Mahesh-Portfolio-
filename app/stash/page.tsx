@@ -5,7 +5,6 @@ import styles from "./page.module.css";
 import StashSection from "./StashSection";
 import PackagingCarousel from "./PackagingCarousel";
 import EmailGallery from "./EmailGallery";
-import VisualPlaceholder from "@/components/case-study/VisualPlaceholder";
 import HoverUnderline from "@/components/HoverUnderline";
 import { TransitionLink } from "@/components/PixelTransition";
 
@@ -198,19 +197,7 @@ export default function StashPage() {
         </div>
       </StashSection>
 
-      <StashSection index="03" heading="concept trailer" wide>
-        <VisualPlaceholder
-          label="Concept trailer — video embed"
-          ratio="16 / 9"
-          note="Coming soon"
-        />
-        <p className={styles.caption}>
-          we chase new snacks; the answer was the millets our ancestors always
-          ate.
-        </p>
-      </StashSection>
-
-      <StashSection index="04" heading="email design">
+      <StashSection index="03" heading="email design">
         <p>
           Four sends, designed end to end — layout, art direction, and copy.
           Open one to read the whole email, or mail yourself the PDF and see it
