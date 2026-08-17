@@ -1,0 +1,64 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  /* Links left, dice game right. */
+  justify-content: space-between;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+/* Long-form pages scroll body copy underneath a fixed, transparent bar, which
+   made the two collide. A soft scrim keeps the nav legible over any content
+   without giving it a hard edge. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -2.5rem 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-base) 0%,
+    color-mix(in srgb, var(--color-base) 82%, transparent) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style: none;
+  gap: 0.25rem clamp(0.75rem, 2vw, 2rem);
+  padding: 1rem clamp(1rem, 4vw, 2rem);
+  /* The bar itself is click-through so it never blocks content beneath;
+     only the items take pointer events. */
+  pointer-events: auto;
+}
+
+.item {
+  /* 44px minimum tap target on touch, achieved with padding so the visual
+     text position is unchanged on desktop. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-off-white);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 30rem) {
+  .item {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,58 @@
+.frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-block: 1rem;
+  padding: 1.5rem;
+  border: 1px dashed
+    color-mix(in srgb, var(--color-off-white) 26%, transparent);
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--color-off-white) 3%, transparent) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+}
+
+.label {
+  max-width: 34ch;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-off-white) 62%, transparent);
+}
+
+.note {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 36%, transparent);
+}
+
+.ratio {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-off-white) 26%, transparent);
+}

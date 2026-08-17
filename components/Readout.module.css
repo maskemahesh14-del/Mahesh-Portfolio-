@@ -1,0 +1,12 @@
+.readout {
+  position: fixed;
+  left: clamp(1.5rem, 7vw, 6rem);
+  bottom: 2.5rem;
+  z-index: 85;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--color-off-white) 42%, transparent);
+  pointer-events: none;
+}

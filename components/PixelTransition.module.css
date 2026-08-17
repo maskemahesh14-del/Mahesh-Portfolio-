@@ -1,0 +1,44 @@
+/* Above page content (and the pin-spacer), below the persistent shell:
+   nav 80 / readout+prompt 85 / grain 90 / cursor 100 all stay visible and
+   interactive over the curtain. pointer-events shields the hidden page. */
+.canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+/* Laid out at full viewport size and scaled down to the source card, so the
+   expansion is a pure transform. */
+.morphPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  width: 100vw;
+  height: 100vh;
+  transform-origin: 0 0;
+  background: var(--color-base);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.morphTitle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 71;
+  max-width: 22ch;
+  transform-origin: 0 50%;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-off-white);
+  pointer-events: none;
+  will-change: transform, opacity;
+}

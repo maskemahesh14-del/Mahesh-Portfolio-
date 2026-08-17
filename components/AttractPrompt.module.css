@@ -1,0 +1,30 @@
+/* Fixed + opacity only: appearing and disappearing must never shift layout.
+   Sits above the hero's own [ SCROLL ] hint so the two never collide. */
+.prompt {
+  position: fixed;
+  left: 50%;
+  bottom: 6.5rem;
+  translate: -50% 0;
+  z-index: 85;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
+  color: var(--color-accent);
+  opacity: 0;
+  transition-property: opacity;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: calc(0.55 + var(--attract-pulse, 0) * 0.45);
+}
+
+/* On short viewports (landscape phones) there is no clear band left at the
+   bottom, so the prompt lands on top of real content. Drop it rather than
+   overlap — attract mode's ambient layer still reads. */
+@media (max-height: 34rem) {
+  .prompt {
+    display: none;
+  }
+}

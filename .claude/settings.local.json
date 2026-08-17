@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx create-next-app@latest . --typescript --eslint --no-tailwind --no-src-dir --app --turbopack --import-alias \"@/*\" --use-npm)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 8328\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 22744\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 23028\")",
+      "PowerShell(foreach \\($id in 8328, 22744, 23028\\) { try { Stop-Process -Id $id -Force -ErrorAction Stop; \"Stopped $id\" } catch { \"Could not stop $id : $\\($_.Exception.Message\\)\" } })",
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { Get-CimInstance Win32_Process -Filter \"ProcessId = $\\($c.OwningProcess\\)\" | Select-Object ProcessId, CommandLine | Format-List } else { \"Port 3000 is free\" })",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name = 'node.exe'\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(echo \"npm: $\\(npm --version\\)\")",
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { \"Port 3000 in use by PID $\\($c.OwningProcess\\)\" } else { \"Port 3000 is free\" })",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 10428\" | Select-Object ProcessId, ParentProcessId, CreationDate, CommandLine | Format-List; $p = \\(Get-CimInstance Win32_Process -Filter \"ProcessId = 10428\"\\).ParentProcessId; Get-CimInstance Win32_Process -Filter \"ProcessId = $p\" | Select-Object ProcessId, ParentProcessId, CommandLine | Format-List)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 24756\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId = 24464\")"
+    ]
+  }
+}

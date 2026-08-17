@@ -1,0 +1,204 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/*
+ * The scroller. Slides are narrower than the track so the neighbouring SKU
+ * peeks in at both edges — it reads as a carousel standing still, rather than
+ * as a card that happens to be centred.
+ */
+.track {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  /* The dots and arrows are the affordance; a scrollbar under the renders
+     just adds a second, uglier one. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 min(86%, 46rem);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 16%, transparent);
+  background: color-mix(in srgb, var(--sku, var(--stash-pink)) 8%, transparent);
+}
+
+.swatch {
+  width: 100%;
+  height: 6px;
+  background: var(--sku, var(--stash-pink));
+}
+
+/* Bag leads, multipack sits alongside at a smaller weight, so the
+   single-serve pack reads as the primary shot. */
+.stage {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  align-items: center;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+/* The renders sit on a cream ground; a faint hairline stops them bleeding
+   into the slide's own tint. */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 12%, transparent);
+}
+
+.shotLabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--stash-cream) 45%, transparent);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.name {
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--stash-cream);
+}
+
+.grain {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--stash-cream) 60%, transparent);
+}
+
+.description {
+  max-width: 52ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--stash-cream) 76%, transparent);
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.arrow {
+  /* 44px min target — same floor the rest of the site holds to. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 30%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--stash-cream);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--stash-pink);
+  color: var(--stash-pink);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.dot {
+  display: block;
+  /* Visually a 10px dot, but padded out to a 44px hit area. */
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--stash-cream) 28%, transparent);
+  transition:
+    background 0.2s ease,
+    scale 0.2s ease;
+}
+
+.dot[data-active="true"]::after {
+  background: var(--sku, var(--stash-pink));
+  scale: 1.4;
+}
+
+.counter {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--stash-cream) 52%, transparent);
+}
+
+@media (max-width: 48rem) {
+  .slide {
+    flex-basis: 90%;
+  }
+
+  /* Side by side gets too cramped to read below this width. */
+  .stage {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow,
+  .dot::after {
+    transition: none;
+  }
+}

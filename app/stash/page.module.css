@@ -1,0 +1,259 @@
+/*
+ * Stash runs its own brand palette. Everything is declared on this wrapper,
+ * so the retro-digital globals in app/globals.css are untouched — the shell
+ * (nav, cursor, grain, readout) renders outside this subtree and keeps them.
+ */
+.stash {
+  --stash-charcoal: #1a1614;
+  --stash-pink: #ff3e8f;
+  --stash-cream: #f4efe6;
+  --stash-nachni: #7b5cd6;
+  --stash-bhutta: #f5c542;
+  --stash-jowar: #f5883e;
+  --stash-bajra: #3ec5c5;
+
+  /* Shadow the global tokens for this subtree only. Shared components that
+     read them (VisualPlaceholder) adopt Stash's palette with no fork. */
+  --color-base: var(--stash-charcoal);
+  --color-off-white: var(--stash-cream);
+  --color-accent: var(--stash-pink);
+
+  min-height: 100dvh;
+  padding-inline: clamp(1.5rem, 7vw, 6rem);
+  padding-bottom: clamp(4rem, 12vh, 8rem);
+  background: var(--stash-charcoal);
+  color: var(--stash-cream);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 86vh;
+  text-align: center;
+}
+
+.wordmark {
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(4.5rem, 26vw, 21rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  color: var(--stash-cream);
+}
+
+.tagline {
+  margin-top: clamp(1rem, 3vh, 2rem);
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(1.125rem, 3.4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--stash-pink);
+}
+
+/* ---------- voice pull-quotes ---------- */
+
+.voiceList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.voiceLine {
+  max-width: 30ch;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--stash-pink);
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--stash-cream);
+}
+
+/* ---------- SKUs ---------- */
+
+.skuGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+}
+
+.sku {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 16%, transparent);
+  background: color-mix(in srgb, var(--sku, var(--stash-pink)) 8%, transparent);
+}
+
+.skuSwatch {
+  width: 100%;
+  height: 6px;
+  background: var(--sku, var(--stash-pink));
+}
+
+.skuMulti {
+  background: linear-gradient(
+    90deg,
+    var(--stash-nachni) 0 25%,
+    var(--stash-bhutta) 25% 50%,
+    var(--stash-jowar) 50% 75%,
+    var(--stash-bajra) 75% 100%
+  );
+}
+
+.skuName {
+  font-family: var(--font-stash), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--stash-cream);
+}
+
+.skuGrain {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--stash-cream) 60%, transparent);
+}
+
+.skuHero {
+  align-self: flex-start;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--stash-charcoal);
+  background: var(--stash-pink);
+}
+
+/* ---------- honesty panel + badges ---------- */
+
+.panelRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+.panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 2px solid var(--stash-cream);
+}
+
+.panelTitle {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  color: color-mix(in srgb, var(--stash-cream) 60%, transparent);
+  margin-bottom: 1rem;
+}
+
+.panelList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.panelItem {
+  display: flex;
+  gap: 0.65rem;
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 500;
+  color: var(--stash-cream);
+}
+
+.panelItem::before {
+  content: "—";
+  color: var(--stash-pink);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.badge {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 30%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--stash-cream) 80%, transparent);
+}
+
+.badgePink {
+  border-color: transparent;
+  background: var(--stash-pink);
+  color: var(--stash-charcoal);
+}
+
+.badgeStamp {
+  border-style: dashed;
+  border-color: var(--stash-cream);
+  color: var(--stash-cream);
+}
+
+/* The email grid, frame and caption rules now live in EmailGallery.module.css,
+   alongside the component that owns them. */
+
+.register {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.registerWord {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--stash-pink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stash-pink);
+}
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--stash-cream) 52%, transparent);
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-top: clamp(2.5rem, 6vh, 4rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--stash-cream) 18%, transparent);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stash-cream);
+}
+
+@media (max-width: 48rem) {
+  .panelRow {
+    grid-template-columns: 1fr;
+  }
+}

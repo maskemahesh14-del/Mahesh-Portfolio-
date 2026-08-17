@@ -1,0 +1,135 @@
+/* The whole panel is the button, so a click anywhere throws both sides. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vh, 1.25rem);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.panel:disabled {
+  cursor: default;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-off-white) 14%, transparent);
+}
+
+.turn {
+  font-family: var(--font-mono);
+  font-size: clamp(0.8125rem, 1.3vw, 1rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 62%, transparent);
+}
+
+/* The cue to click: accent, and breathing so it reads as an invitation. */
+.turn[data-phase="idle"] {
+  color: var(--color-accent);
+  animation: pulse 2.1s ease-in-out infinite;
+}
+
+/* Belt and braces with the JS check, so the pulse is gone either way. */
+.turn[data-reduced="true"] {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .turn {
+    animation: none;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.tally {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-off-white) 62%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
+.dice {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  min-height: 0;
+}
+
+.side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.dieBox {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid transparent;
+  /* mirrors durations.hover / easings.expoOut in lib/motion.ts */
+  transition: border-color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panel:not(:disabled):hover .dieBox,
+.panel:focus-visible .dieBox {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+
+.panel:focus-visible {
+  outline: none;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-off-white) 45%, transparent);
+}
+
+.result {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-off-white) 38%, transparent);
+  transition: color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result[data-outcome="you"] {
+  color: var(--color-accent);
+}
+
+.result[data-outcome="me"] {
+  color: color-mix(in srgb, var(--color-off-white) 75%, transparent);
+}

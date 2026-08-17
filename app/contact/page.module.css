@@ -1,0 +1,151 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-inline: clamp(1.5rem, 7vw, 6rem);
+  padding-block: clamp(6rem, 14vh, 9rem) clamp(4rem, 10vh, 7rem);
+}
+
+.column {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.title {
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  margin-top: clamp(2.5rem, 7vh, 4.5rem);
+  padding-top: clamp(2rem, 5vh, 3rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-off-white) 14%, transparent);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  /* Comfortable tap target on touch without needing a hover affordance. */
+  justify-content: center;
+  min-height: 44px;
+  padding-block: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  color: var(--color-off-white);
+}
+
+.linkLabel {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 42%, transparent);
+}
+
+/* ---------- form ---------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 42%, transparent);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-off-white) 22%, transparent);
+  background: color-mix(in srgb, var(--color-off-white) 4%, transparent);
+  color: var(--color-off-white);
+  font-family: var(--font-mono);
+  /* 16px minimum: anything smaller makes iOS Safari zoom on focus. */
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0;
+  transition: border-color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.submit {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-accent);
+  background: none;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition:
+    background-color 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submit:hover,
+.submit:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-base);
+}
+
+.formNote {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-off-white) 40%, transparent);
+}
+
+@media (max-width: 48rem) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+}

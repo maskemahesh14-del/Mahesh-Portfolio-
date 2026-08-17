@@ -1,0 +1,344 @@
+/*
+ * Same auto-fit pattern as .skuGrid, but the minimum is deliberately large:
+ * at 18rem this container fits three columns, which lays four sends out as
+ * 3 + 1. 24rem forces the 2 x 2 the section wants.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  list-style: none;
+}
+
+.tile {
+  min-width: 0;
+}
+
+/* The whole tile is the control — one tab stop, and a target you can't miss. */
+.trigger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  /* Every thumbnail is pre-cropped to 900x1200, so this ratio crops nothing —
+     it just guarantees the tiles stay identical if one ever isn't. */
+  aspect-ratio: 3 / 4;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 18%, transparent);
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.4s ease;
+}
+
+.trigger:hover .thumb,
+.trigger:focus-visible .thumb {
+  scale: 1.03;
+}
+
+.expand {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--stash-pink);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--stash-charcoal);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.trigger:hover .expand,
+.trigger:focus-visible .expand {
+  opacity: 1;
+}
+
+/* No hover on touch, so the chip would never appear — show it outright. */
+@media (hover: none) {
+  .expand {
+    opacity: 1;
+  }
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--stash-cream) 45%, transparent);
+}
+
+.headline {
+  font-family: var(--font-stash), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--stash-cream);
+}
+
+.cta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--stash-pink);
+}
+
+/* ---------- expanded view ---------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  background: color-mix(in srgb, #000 76%, transparent);
+  /*
+   * No fill-mode on purpose. With `both` the element rests on the from-frame
+   * whenever animations don't run (background tab, animation-disabling
+   * extension) — i.e. an invisible modal with no error. Without it, the
+   * resting state is the plain computed style and a skipped animation just
+   * means no entrance.
+   */
+  animation: fade 0.25s ease;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  /* Narrower on purpose: the email image renders at the reader's full width
+     (see .full), so a narrower panel scales it down and shortens its total
+     rendered height — more of the email is visible in the 80vh box before
+     the reader needs to scroll. Capped so it still reads at a sane size on
+     a wide monitor and doesn't shrink to nothing on a narrow one. */
+  max-width: 30rem;
+  min-width: 20rem;
+  height: 80vh;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 20%, transparent);
+  border-radius: 0.75rem;
+  background: var(--stash-charcoal);
+  animation: rise 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panelHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: none;
+  padding: 1rem clamp(1rem, 3vw, 1.5rem);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--stash-cream) 14%, transparent);
+}
+
+.panelTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.close {
+  flex: none;
+  margin-left: auto;
+  /* 44px min target, same floor as the rest of the site. */
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 30%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.875rem;
+  color: var(--stash-cream);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.close:hover {
+  border-color: var(--stash-pink);
+  color: var(--stash-pink);
+}
+
+/* The email itself, scrolled at natural width. */
+.reader {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  background: var(--stash-cream);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--stash-charcoal) 35%, transparent)
+    transparent;
+}
+
+.full {
+  display: block;
+  width: 100%;
+  /* Overrides the width/height attributes' implied ratio so the image keeps
+     its natural proportions and runs long inside the scroller. */
+  height: auto;
+}
+
+/* ---------- send to inbox ---------- */
+
+.send {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: none;
+  padding: 0.9rem clamp(1rem, 3vw, 1.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--stash-cream) 14%, transparent);
+}
+
+.sendLabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--stash-cream) 45%, transparent);
+}
+
+.sendRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sendInput {
+  flex: 1 1 14rem;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--stash-cream) 26%, transparent);
+  border-radius: 0.375rem;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--stash-cream);
+}
+
+.sendInput::placeholder {
+  color: color-mix(in srgb, var(--stash-cream) 32%, transparent);
+}
+
+.sendInput:focus-visible {
+  outline: 2px solid var(--stash-pink);
+  outline-offset: 1px;
+}
+
+.sendButton {
+  flex: none;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--stash-pink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--stash-charcoal);
+  cursor: pointer;
+}
+
+.sendButton:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sendStatus {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--stash-cream) 70%, transparent);
+}
+
+.sendStatus[data-status="sent"] {
+  color: var(--stash-bajra);
+}
+
+.sendStatus[data-status="error"] {
+  color: var(--stash-pink);
+}
+
+/* Both keyframe sets state their end frame explicitly so neither depends on
+   fill-mode to land somewhere visible. */
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 48rem) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Near enough full-screen on a phone — 80vw of a 375px screen is unreadable. */
+  .panel {
+    width: 100%;
+    height: 88vh;
+    max-width: none;
+  }
+}
+
+/*
+ * Reduced motion: show and hide instantly, same as the rest of the site.
+ * data-reduced covers the JS-driven case; the media query covers users whose
+ * setting is on before hydration.
+ */
+.scrim[data-reduced="true"],
+.scrim[data-reduced="true"] .panel {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrim,
+  .panel {
+    animation: none;
+  }
+
+  .thumb,
+  .expand,
+  .close {
+    transition: none;
+  }
+}

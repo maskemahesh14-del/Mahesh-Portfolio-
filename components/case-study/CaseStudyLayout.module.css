@@ -1,0 +1,27 @@
+.page {
+  padding-inline: clamp(1.5rem, 7vw, 6rem);
+  padding-bottom: clamp(4rem, 12vh, 8rem);
+}
+
+.column {
+  max-width: 78rem;
+  margin-inline: auto;
+}
+
+.footer {
+  padding-top: clamp(2.5rem, 6vh, 4rem);
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-off-white) 14%, transparent);
+}
+
+.back {
+  /* 44px minimum tap target on touch. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-off-white);
+}

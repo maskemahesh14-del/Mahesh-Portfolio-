@@ -1,0 +1,24 @@
+/* Fixed + opacity only, same rule as AttractPrompt: appearing and
+   disappearing must never shift layout underneath it. Sits below the grain
+   overlay (90) and the attract prompt text (85) so both still read on top
+   of the board, above ordinary page content. */
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: var(--color-base);
+  opacity: 0;
+  transition-property: opacity;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* The board only needs to feel present, not maximal — a hairline inset
+   keeps it from butting flush against the viewport edge. */
+.stage > :global(div) {
+  position: absolute;
+  inset: 0;
+}

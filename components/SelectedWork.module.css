@@ -1,0 +1,216 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 10vh, 7rem);
+  padding: clamp(5rem, 12vh, 9rem) clamp(1.5rem, 7vw, 6rem);
+}
+
+.block {
+  min-width: 0;
+}
+
+.heading {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 55%, transparent);
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.list {
+  list-style: none;
+}
+
+.item {
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-off-white) 14%, transparent);
+}
+
+.item:last-child {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-off-white) 14%, transparent);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: clamp(2rem, 5vh, 3.25rem) 0;
+  color: inherit;
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding-top: 0.5rem;
+  color: color-mix(in srgb, var(--color-off-white) 38%, transparent);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+/* Mono is load-bearing here, not decorative: DecodeText swaps glyphs in
+   place, and a fixed advance width keeps the metric from reflowing as it
+   resolves. */
+.metric {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.role {
+  max-width: 42ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-off-white) 62%, transparent);
+}
+
+.arrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  line-height: 1;
+  padding-top: 0.35rem;
+  color: color-mix(in srgb, var(--color-off-white) 45%, transparent);
+  /* Mirrors durations.hover / easings.expoOut from lib/motion.ts — this is a
+     CSS-only hover, so it can't read the TS tokens the way HoverUnderline does. */
+  transition: color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  color: var(--color-accent);
+}
+
+/* ---------- Stash banner ---------- */
+
+/*
+ * Deliberately not `.card`'s three-column metric/title/role grid: this entry
+ * has no metric, and reusing that shape would imply one. Wider, boxed, and
+ * led by the swatch instead of a number.
+ */
+.stashCard {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--color-off-white) 18%, transparent);
+  background: color-mix(in srgb, var(--color-off-white) 3%, transparent);
+  color: inherit;
+  transition: border-color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stashCard:hover,
+.stashCard:focus-visible {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  outline: none;
+}
+
+/* The four SKU colours from the Stash page, quoted here as a brand cue. */
+.stashSwatch {
+  width: clamp(0.5rem, 1vw, 0.75rem);
+  align-self: stretch;
+  min-height: 6rem;
+  background: linear-gradient(
+    to bottom,
+    #7b5cd6 0 25%,
+    #f5c542 25% 50%,
+    #f5883e 50% 75%,
+    #3ec5c5 75% 100%
+  );
+}
+
+.stashBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.stashTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stashRole {
+  max-width: 52ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-off-white) 68%, transparent);
+}
+
+.stashScope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stashChip {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--color-off-white) 22%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-off-white) 60%, transparent);
+}
+
+.stashArrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-off-white) 45%, transparent);
+  transition: color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.stashCard:hover .stashArrow,
+.stashCard:focus-visible .stashArrow {
+  color: var(--color-accent);
+}
+
+@media (max-width: 40rem) {
+  .card {
+    grid-template-columns: auto 1fr;
+    row-gap: 1rem;
+  }
+
+  .arrow {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .stashCard {
+    grid-template-columns: auto 1fr;
+    row-gap: 1.25rem;
+  }
+
+  .stashArrow {
+    grid-column: 2;
+  }
+}

@@ -1,0 +1,31 @@
+.root {
+  position: relative;
+  display: inline-block;
+  transition-property: color;
+}
+
+.underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition-property: transform;
+}
+
+:global(a):hover .root,
+:global(a):focus-visible .root,
+:global(button):hover .root,
+:global(button):focus-visible .root {
+  color: var(--color-accent);
+}
+
+:global(a):hover .underline,
+:global(a):focus-visible .underline,
+:global(button):hover .underline,
+:global(button):focus-visible .underline {
+  transform: scaleX(1);
+}

@@ -1,0 +1,51 @@
+.section {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 10vh, 7rem);
+}
+
+.wide {
+  max-width: 78rem;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.75rem, 2.5vw, 1.5rem);
+  padding-bottom: 1.25rem;
+  margin-bottom: clamp(1.75rem, 4vh, 2.75rem);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--stash-cream) 18%, transparent);
+}
+
+.index {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--stash-pink);
+}
+
+/* No text-transform anywhere in this page: the brand voice is lowercase,
+   and uppercasing it would break it. */
+.heading {
+  font-family: var(--font-stash), sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--stash-cream);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--stash-cream) 76%, transparent);
+}
+
+.body > p {
+  max-width: 62ch;
+}
