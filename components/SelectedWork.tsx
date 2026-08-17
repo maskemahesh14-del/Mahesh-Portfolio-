@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./SelectedWork.module.css";
 import DecodeText from "./DecodeText";
 import HoverUnderline from "./HoverUnderline";
-import { usePixelTransition } from "./PixelTransition";
+import { TransitionLink, usePixelTransition } from "./PixelTransition";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { durations, easings, toSeconds } from "@/lib/motion";
 
@@ -97,21 +97,20 @@ function useMorphClick(href: string, title: string) {
   return { ref, onClick };
 }
 
+/**
+ * Plain pixel dissolve, same as every other link on the site — not the morph
+ * StashBanner uses. Case studies used to morph too, but that read as a
+ * different transition entirely rather than a variant of the same one.
+ */
 function WorkCard({ entry, index }: { entry: WorkEntry; index: number }) {
   // Magnetic lives on the arrow, not the card: useMagnetic scales pull by
   // element size, so a full-width card would fling hundreds of px.
   const arrowRef = useRef<HTMLSpanElement>(null);
   useMagnetic(arrowRef);
-  const { ref: cardRef, onClick } = useMorphClick(entry.href, entry.title);
 
   return (
     <li className={styles.item} data-work-card>
-      <Link
-        ref={cardRef}
-        href={entry.href}
-        className={styles.card}
-        onClick={onClick}
-      >
+      <TransitionLink href={entry.href} className={styles.card}>
         <span className={styles.index}>
           {String(index + 1).padStart(2, "0")}
         </span>
@@ -131,7 +130,7 @@ function WorkCard({ entry, index }: { entry: WorkEntry; index: number }) {
         <span ref={arrowRef} className={styles.arrow} aria-hidden="true">
           →
         </span>
-      </Link>
+      </TransitionLink>
     </li>
   );
 }

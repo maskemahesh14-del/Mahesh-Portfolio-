@@ -36,20 +36,20 @@
   text-align: center;
 }
 
-.wordmark {
-  font-family: var(--font-stash), sans-serif;
-  font-size: clamp(4.5rem, 26vw, 21rem);
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.035em;
-  color: var(--stash-cream);
+/* The real logotype, not text: sized on the <img> itself rather than a
+   font-size, since there's no text left to style. */
+.wordmark img {
+  display: block;
+  width: clamp(16rem, 60vw, 52rem);
+  height: auto;
 }
 
 .tagline {
   margin-top: clamp(1rem, 3vh, 2rem);
-  font-family: var(--font-stash), sans-serif;
+  font-family: var(--font-stash-display), sans-serif;
   font-size: clamp(1.125rem, 3.4vw, 2.25rem);
-  font-weight: 500;
+  /* Moliga-DEMO's only weight is 400 — same reasoning as .heading. */
+  font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--stash-pink);
 }

@@ -26,12 +26,19 @@
   color: var(--stash-pink);
 }
 
-/* No text-transform anywhere in this page: the brand voice is lowercase,
-   and uppercasing it would break it. */
+/*
+ * No text-transform anywhere in this page: the brand voice is lowercase,
+ * and uppercasing it would break it.
+ *
+ * font-weight: 400, not omitted: Moliga-DEMO ships one static Regular face.
+ * Leaving font-weight undeclared doesn't mean "don't ask for a weight" — h2
+ * carries a bold (700) user-agent default, so an undeclared value here
+ * would still request 700 from a font that only has 400.
+ */
 .heading {
-  font-family: var(--font-stash), sans-serif;
+  font-family: var(--font-stash-display), sans-serif;
   font-size: clamp(1.75rem, 5vw, 3.25rem);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--stash-cream);

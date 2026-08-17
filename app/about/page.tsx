@@ -48,7 +48,6 @@ const HOW_I_WORK = [
 ];
 
 const SKILLS = ["UX design", "Email design", "Gen AI"];
-const TOOLS = ["Figma", "After Effects", "AI image/video"];
 
 export default function AboutPage() {
   return (
@@ -93,23 +92,13 @@ export default function AboutPage() {
           </div>
         </CaseStudySection>
 
-        <CaseStudySection index="03" heading="Skills and tools">
+        <CaseStudySection index="03" heading="Skills">
           <div className={styles.skillsGrid}>
             <div>
               <p className={styles.listLabel}>Skills</p>
               <ul className={styles.chips}>
                 {SKILLS.map((item) => (
                   <li key={item} className={styles.chipAccent}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className={styles.listLabel}>Tools</p>
-              <ul className={styles.chips}>
-                {TOOLS.map((item) => (
-                  <li key={item} className={styles.chip}>
                     {item}
                   </li>
                 ))}

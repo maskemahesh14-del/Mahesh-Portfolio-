@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Fredoka } from "next/font/google";
+import localFont from "next/font/local";
 import styles from "./page.module.css";
 import StashSection from "./StashSection";
 import PackagingCarousel from "./PackagingCarousel";
@@ -13,6 +14,18 @@ const fredoka = Fredoka({
   variable: "--font-stash",
   subsets: ["latin"],
   weight: "variable",
+});
+
+/**
+ * Display font for section headings and the tagline only — everything else
+ * (SKU names, badges, panel titles, body copy) stays on Fredoka. Moliga-DEMO
+ * ships as a single static Regular weight, not variable, so `weight` is
+ * required here (next/font/local throws without it for a non-variable font).
+ */
+const moliga = localFont({
+  src: "./fonts/Moliga-DEMO.otf",
+  variable: "--font-stash-display",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -120,9 +133,15 @@ const REGISTER = ["bhai", "yaar", "bas", "matlab"];
 
 export default function StashPage() {
   return (
-    <main className={`${styles.stash} ${fredoka.variable}`}>
+    <main className={`${styles.stash} ${fredoka.variable} ${moliga.variable}`}>
       <header className={styles.hero}>
-        <h1 className={styles.wordmark}>STASH</h1>
+        <h1 className={styles.wordmark}>
+          {/* eslint-disable-next-line @next/next/no-img-element --
+              A plain <img> avoids next/image needing explicit intrinsic
+              dimensions for what's already a lossless vector; the logo
+              scales purely by CSS width against its native aspect ratio. */}
+          <img src="/stash/logo.svg" alt="STASH" />
+        </h1>
         <p className={styles.tagline}>real food, not fad food</p>
       </header>
 

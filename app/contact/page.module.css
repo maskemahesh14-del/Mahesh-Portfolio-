@@ -30,10 +30,13 @@
   text-wrap: balance;
 }
 
+/* Single column: the form that used to fill the second column is removed
+   for now, and stretching .links across a two-column grid with nothing
+   beside it would leave an obvious empty half. */
 .body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 6vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  max-width: 28rem;
   margin-top: clamp(2.5rem, 7vh, 4.5rem);
   padding-top: clamp(2rem, 5vh, 3rem);
   border-top: 1px solid
@@ -142,10 +145,4 @@
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   color: color-mix(in srgb, var(--color-off-white) 40%, transparent);
-}
-
-@media (max-width: 48rem) {
-  .body {
-    grid-template-columns: 1fr;
-  }
 }

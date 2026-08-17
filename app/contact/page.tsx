@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
-import ContactForm from "./ContactForm";
 import DecodeText from "@/components/DecodeText";
 import HoverUnderline from "@/components/HoverUnderline";
 
@@ -46,8 +45,6 @@ export default function ContactPage() {
               </a>
             </li>
           </ul>
-
-          <ContactForm />
         </div>
       </div>
     </main>
