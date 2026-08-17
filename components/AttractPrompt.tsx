@@ -17,7 +17,7 @@ export default function AttractPrompt() {
         transitionTimingFunction: easings.expoOut.css,
       }}
     >
-      {"// idle — move to continue"}
+      {"// idle: move to continue"}
     </p>
   );
 }

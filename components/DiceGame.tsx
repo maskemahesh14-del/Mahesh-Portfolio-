@@ -192,7 +192,7 @@ export default function DiceGame() {
             {TURN_TEXT[phase]}
           </span>
           <span className={styles.tally}>
-            you {tally.you} — {tally.me} me
+            you {tally.you} · {tally.me} me
           </span>
         </span>
 

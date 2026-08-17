@@ -18,7 +18,7 @@ const fredoka = Fredoka({
 export const metadata: Metadata = {
   title: "Stash",
   description:
-    "A self-initiated brand built end to end — honest, anti-hype, desi-revival healthy snacking. Identity, packaging, voice and lifecycle creative.",
+    "A self-initiated brand built end to end: honest, anti-hype, desi-revival healthy snacking. Identity, packaging, voice and lifecycle creative.",
 };
 
 const VOICE_LINES = [
@@ -38,7 +38,7 @@ const SKUS = [
     hero: true,
     color: "var(--stash-nachni)",
     description:
-      "ragi. India's oldest cultivated grain — higher fibre than almost anything else in the snack aisle.",
+      "ragi. India's oldest cultivated grain, with higher fibre than almost anything else in the snack aisle.",
   },
   {
     name: "Bhutta",
@@ -62,7 +62,7 @@ const SKUS = [
     slug: "bajra",
     color: "var(--stash-bajra)",
     description:
-      "pearl millet — dense, earthy, the one that actually holds you over.",
+      "pearl millet, dense and earthy, the one that actually holds you over.",
   },
 ];
 
@@ -129,13 +129,13 @@ export default function StashPage() {
       <StashSection index="01" heading="the brand">
         <p>
           Honest, anti-hype, desi-revival healthy snacking. The enemy is
-          fad-health — protein hype, “superfood” nonsense, overpriced imports.
+          fad-health: protein hype, “superfood” nonsense, overpriced imports.
           The thesis: the old Indian grains our ancestors ate were already the
           honest healthy snack.
         </p>
         <p>
-          The voice does the positioning. Deadpan, lowercase, no punctuation —
-          it refuses to sell hard, which is the whole point.
+          The voice does the positioning. Deadpan, lowercase, no punctuation.
+          It refuses to sell hard, which is the whole point.
         </p>
         <ul className={styles.voiceList}>
           {VOICE_LINES.map((line) => (
@@ -169,7 +169,7 @@ export default function StashPage() {
           <li className={styles.sku}>
             <span className={`${styles.skuSwatch} ${styles.skuMulti}`} />
             <span className={styles.skuName}>Variety</span>
-            <span className={styles.skuGrain}>multipack — all four</span>
+            <span className={styles.skuGrain}>multipack, all four</span>
           </li>
         </ul>
 
@@ -199,7 +199,7 @@ export default function StashPage() {
 
       <StashSection index="03" heading="email design">
         <p>
-          Four sends, designed end to end — layout, art direction, and copy.
+          Four sends, designed end to end: layout, art direction, and copy.
           Open one to read the whole email, or mail yourself the PDF and see it
           where it was meant to be read.
         </p>

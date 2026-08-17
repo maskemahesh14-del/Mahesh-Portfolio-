@@ -155,7 +155,7 @@ export default function PackagingCarousel({ skus }: { skus: CarouselSku[] }) {
             <div className={styles.meta}>
               <p className={styles.name}>
                 {sku.name}
-                <span className={styles.grain}> — {sku.grain}</span>
+                <span className={styles.grain}>, {sku.grain}</span>
               </p>
               <p className={styles.description}>{sku.description}</p>
             </div>

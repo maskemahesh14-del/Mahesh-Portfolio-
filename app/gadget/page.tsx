@@ -10,7 +10,7 @@ export default function GadgetPage() {
     <PlaceholderRoute
       kicker="// GADGET"
       title="Coming soon"
-      body="An interactive toy lives here. It's a separate build — this route exists so the nav resolves."
+      body="An interactive toy lives here. It's a separate build. This route exists so the nav resolves."
     />
   );
 }

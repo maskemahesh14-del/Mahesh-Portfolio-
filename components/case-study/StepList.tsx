@@ -24,7 +24,7 @@ export default function StepList({ steps, ordered = true }: StepListProps) {
       {steps.map((step, i) => (
         <li key={step.title} className={styles.item}>
           <span className={styles.marker} aria-hidden="true">
-            {ordered ? String(i + 1).padStart(2, "0") : "—"}
+            {ordered ? String(i + 1).padStart(2, "0") : "•"}
           </span>
           <div className={styles.content}>
             <h3 className={styles.title}>{step.title}</h3>

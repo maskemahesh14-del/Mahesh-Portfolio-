@@ -7,7 +7,7 @@ import DiceGame from "./DiceGame";
 const TITLE = "Mahesh ’26";
 const SUBTEXT = "email design, ux design & gen ai";
 const INTRO =
-  "Design was the thing I did before anyone paid me to. The tools grew up — email, UX, generative AI — but the pull to make something that actually works never changed.";
+  "Design was the thing I did before anyone paid me to. The tools grew up (email, UX, generative AI), but the pull to make something that actually works never changed.";
 
 export default function Hero() {
   return (

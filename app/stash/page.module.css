@@ -172,7 +172,7 @@
 }
 
 .panelItem::before {
-  content: "—";
+  content: "•";
   color: var(--stash-pink);
 }
 

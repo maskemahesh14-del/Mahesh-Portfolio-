@@ -46,7 +46,7 @@ const CASE_STUDIES: WorkEntry[] = [
  */
 const STASH = {
   title: "Stash",
-  role: "A self-initiated brand, built end to end — identity, packaging, trailer, voice and lifecycle creative.",
+  role: "A self-initiated brand, built end to end: identity, packaging, trailer, voice and lifecycle creative.",
   scope: ["identity", "packaging", "trailer", "voice", "lifecycle"],
   href: "/stash",
 };

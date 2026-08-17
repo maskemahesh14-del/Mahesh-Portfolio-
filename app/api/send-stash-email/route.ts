@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     // This way an unconfigured deploy shows the form's error state instead
     // of a 500.
     return Response.json(
-      { error: "sending isn't set up yet — no RESEND_API_KEY on the server" },
+      { error: "sending isn't set up yet: no RESEND_API_KEY on the server" },
       { status: 503 },
     );
   }
@@ -101,9 +101,9 @@ export async function POST(request: Request) {
       text: [
         "here's the email you asked for, attached as the original PDF.",
         "",
-        "open it on your phone — that's what it was designed for.",
+        "open it on your phone. that's what it was designed for.",
         "",
-        "— stash",
+        "stash",
       ].join("\n"),
       attachments: [{ filename: send.file, content: attachment }],
     });

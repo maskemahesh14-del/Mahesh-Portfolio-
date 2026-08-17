@@ -288,7 +288,7 @@ function SendToInbox({ emailId }: { emailId: string }) {
       }
 
       setStatus("sent");
-      setMessage("sent — check your inbox");
+      setMessage("sent. check your inbox");
     } catch {
       setStatus("error");
       setMessage("couldn't send that, try again");

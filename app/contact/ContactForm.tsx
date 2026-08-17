@@ -17,8 +17,8 @@ export default function ContactForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`Portfolio enquiry — ${name || "hello"}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name || "hello"}`);
+    const body = encodeURIComponent(`${message}\n\n${name}\n${email}`);
     window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`;
   }
 
@@ -75,7 +75,7 @@ export default function ContactForm() {
         SEND →
       </button>
       <p className={styles.formNote}>
-        Opens your mail client — no backend wired up yet.
+        Opens your mail client. No backend wired up yet.
       </p>
     </form>
   );

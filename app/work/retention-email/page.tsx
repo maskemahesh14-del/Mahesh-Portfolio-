@@ -8,20 +8,20 @@ import MetricCallout, {
 import StepList from "@/components/case-study/StepList";
 
 export const metadata: Metadata = {
-  title: "Retention Email & WhatsApp — Work",
+  title: "Retention Email & WhatsApp: Work",
   description:
-    "Email and WhatsApp creative for three D2C retention programs — skincare, fashion, supplements — built on one idea: earn the second order instead of forcing a bigger first one.",
+    "Email and WhatsApp creative for three D2C retention programs (skincare, fashion, supplements), built on one idea: earn the second order instead of forcing a bigger first one.",
 };
 
 const SUMMARY =
-  "I designed the email and WhatsApp creative for retention programs across three D2C brands — skincare, fashion, supplements. The campaigns, the lifecycle creative, the content series, the WhatsApp sends: the part the customer actually sees and reacts to. Read the numbers here honestly — they’re program results the creative I built helped carry, not numbers I generated alone. That’s the only kind of number worth putting in a portfolio. What makes the three worth showing together isn’t three separate wins; it’s that they all run on one idea — earn the second order instead of forcing a bigger first one.";
+  "I designed the email and WhatsApp creative for retention programs across three D2C brands (skincare, fashion, supplements). The campaigns, the lifecycle creative, the content series, the WhatsApp sends: the part the customer actually sees and reacts to. Read the numbers here honestly: they’re program results the creative I built helped carry, not numbers I generated alone. That’s the only kind of number worth putting in a portfolio. What makes the three worth showing together isn’t three separate wins; it’s that they all run on one idea: earn the second order instead of forcing a bigger first one.";
 
 const META = [
   {
     label: "Role",
-    value: "Email + WhatsApp creative — strategy set with the wider team",
+    value: "Email + WhatsApp creative (strategy set with the wider team)",
   },
-  { label: "Scope", value: "Three D2C brands — skincare, fashion, supplements" },
+  { label: "Scope", value: "Three D2C brands (skincare, fashion, supplements)" },
 ];
 
 const LADDER = [
@@ -29,7 +29,7 @@ const LADDER = [
     title: "Hero",
     body: (
       <p>
-        Lead with the product that shows the most visible result — the one that
+        Lead with the product that shows the most visible result: the one that
         makes someone go “oh, this actually works.” <strong>Trust earned.</strong>
       </p>
     ),
@@ -47,7 +47,7 @@ const LADDER = [
     title: "Explore",
     body: (
       <p>
-        “Skin sorted — now meet the rest.” The trust built on one shelf carries
+        “Skin sorted. Now meet the rest.” The trust built on one shelf carries
         to the next. <strong>Trust stretches across the brand.</strong>
       </p>
     ),
@@ -79,7 +79,7 @@ const SKINCARE_WORK = [
     body: (
       <p>
         A weekly skin-education series, including the “Skin Win Wednesday”
-        WhatsApp stories, designed to keep the brand useful between purchases —
+        WhatsApp stories, designed to keep the brand useful between purchases,
         not just present at the sell.
       </p>
     ),
@@ -100,9 +100,9 @@ export default function RetentionEmailCaseStudyPage() {
   return (
     <CaseStudyLayout>
       <CaseStudyHero
-        kicker="// WORK — 001"
+        kicker="// WORK 001"
         title="The creative that earns the second order"
-        deck="Email & WhatsApp design for three D2C retention programs — skincare, fashion, supplements."
+        deck="Email & WhatsApp design for three D2C retention programs (skincare, fashion, supplements)."
         summary={SUMMARY}
         meta={META}
         note="Brands withheld under NDA; figures are real program outcomes"
@@ -120,7 +120,7 @@ export default function RetentionEmailCaseStudyPage() {
         <p>
           The programs aren’t forcing a bigger first order. They’re earning the
           second one. The third. And the one a customer’s friend places for
-          them. Every piece of creative I design has a job inside that ladder —
+          them. Every piece of creative I design has a job inside that ladder,
           and knowing which rung a send is on is what makes the design
           decisions, not decoration.
         </p>
@@ -128,7 +128,7 @@ export default function RetentionEmailCaseStudyPage() {
 
       <CaseStudySection
         index="02"
-        heading="Hero deep-dive — Skincare: quiz-to-cash"
+        heading="Hero deep-dive, Skincare: quiz-to-cash"
       >
         <p>
           <strong>The problem the creative had to solve:</strong> 72% of
@@ -151,14 +151,14 @@ export default function RetentionEmailCaseStudyPage() {
           />
           <MetricCallout
             value="2.5×"
-            label="Day-30 replenishment WhatsApp campaigns outperformed email — the finding that reshaped how I designed for channel across the rest of the work."
+            label="Day-30 replenishment WhatsApp campaigns outperformed email: the finding that reshaped how I designed for channel across the rest of the work."
           />
         </MetricRow>
       </CaseStudySection>
 
       <CaseStudySection
         index="03"
-        heading="Breadth — same thinking, different category"
+        heading="Breadth: same thinking, different category"
       >
         <h3>Fashion: VIP community drives category expansion</h3>
         <p>
@@ -182,7 +182,7 @@ export default function RetentionEmailCaseStudyPage() {
 
         <h3>Supplements: community-led retention</h3>
         <p>
-          67% never reordered after the first bottle — skepticism without
+          67% never reordered after the first bottle: skepticism without
           guidance, generic recommendations, no community to build adherence.
         </p>
         <p>
@@ -207,15 +207,15 @@ export default function RetentionEmailCaseStudyPage() {
 
       <CaseStudySection index="04" heading="Why this is in my portfolio">
         <p>
-          Three categories, one system. The creative changes — skincare glow
-          guides, fashion UGC, supplement communities — but the logic underneath
+          Three categories, one system. The creative changes (skincare glow
+          guides, fashion UGC, supplement communities), but the logic underneath
           is the same every time: design for the rung of the ladder the customer
           is actually standing on, and earn the next order instead of forcing a
           bigger first one.
         </p>
         <p>
           I design email and WhatsApp creative. But I design it knowing exactly
-          what funnel it’s serving and why — which is the difference between
+          what funnel it’s serving and why, which is the difference between
           making a nice email and making one that moves a number.
         </p>
       </CaseStudySection>

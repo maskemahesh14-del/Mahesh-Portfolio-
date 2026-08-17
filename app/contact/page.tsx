@@ -7,7 +7,7 @@ import HoverUnderline from "@/components/HoverUnderline";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Freelance or full-time — if it needs to convert, i want to hear about it.",
+    "Freelance or full-time. If it needs to convert, i want to hear about it.",
 };
 
 const EMAIL = "maheshmaske840@gmail.com";
@@ -22,7 +22,7 @@ export default function ContactPage() {
         </p>
 
         <h1 className={styles.title}>
-          freelance or full-time — if it needs to convert, i want to hear about
+          freelance or full-time. if it needs to convert, i want to hear about
           it
         </h1>
 

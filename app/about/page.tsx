@@ -9,7 +9,7 @@ import { TransitionLink } from "@/components/PixelTransition";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Designer working across email, web and commerce — research through interface. Good UX isn't decoration on a product, it is the product.",
+    "Designer working across email, web and commerce: research through interface. Good UX isn't decoration on a product, it is the product.",
 };
 
 const HOW_I_WORK = [
@@ -19,7 +19,7 @@ const HOW_I_WORK = [
       <p>
         Before anything gets designed, I want to know who is actually on the
         other end and what they are trying to finish. Research isn’t a phase I
-        pass through — it’s the thing every later decision has to trace back
+        pass through. It’s the thing every later decision has to trace back
         to.
       </p>
     ),
@@ -29,7 +29,7 @@ const HOW_I_WORK = [
     body: (
       <p>
         Briefs arrive with answers already baked in. The most useful thing I
-        can do is ask whether the stated problem is the real one — that’s how a
+        can do is ask whether the stated problem is the real one. That’s how a
         request to write product pages turned into a redesign of how a company
         sells.
       </p>
@@ -62,15 +62,15 @@ export default function AboutPage() {
             I design the part of the product that has to convince someone.
           </h1>
           <p className={styles.intro}>
-            I’m Mahesh — a designer working across email, web and commerce. I
+            I’m Mahesh, a designer working across email, web and commerce. I
             came into UX sideways: I was hired to write Amazon product pages,
             followed the content problem upstream, and ended up redesigning how
-            the company sold. That’s the pattern in most of my work — start
+            the company sold. That’s the pattern in most of my work: start
             where the customer actually is, then follow the logic as far as it
             goes.
           </p>
           <p className={styles.pullQuote}>
-            good UX isn’t decoration on a product — it is the product
+            good UX isn’t decoration on a product, it is the product
           </p>
         </header>
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
         <section className={styles.cta}>
           <p className={styles.ctaLine}>
-            Freelance or full-time — if it needs to convert, I want to hear
+            Freelance or full-time. If it needs to convert, I want to hear
             about it.
           </p>
           <TransitionLink href="/contact" className={styles.ctaLink}>
