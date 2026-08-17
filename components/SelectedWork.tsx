@@ -1,14 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
-import type { MouseEvent } from "react";
-import Link from "next/link";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./SelectedWork.module.css";
 import DecodeText from "./DecodeText";
 import HoverUnderline from "./HoverUnderline";
-import { TransitionLink, usePixelTransition } from "./PixelTransition";
+import { TransitionLink } from "./PixelTransition";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { durations, easings, toSeconds } from "@/lib/motion";
 
@@ -54,53 +52,9 @@ const STASH = {
 };
 
 /**
- * Both card shapes morph into their destination; every other link in the site
- * keeps the plain pixel dissolve. Modified clicks fall through to the browser
- * so open-in-new-tab still works.
- */
-function useMorphClick(href: string, title: string) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const { navigate } = usePixelTransition();
-
-  const onClick = useCallback(
-    (event: MouseEvent<HTMLAnchorElement>) => {
-      if (
-        event.defaultPrevented ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-      event.preventDefault();
-      const rect = ref.current?.getBoundingClientRect();
-      navigate(
-        href,
-        rect
-          ? {
-              rect: {
-                top: rect.top,
-                left: rect.left,
-                width: rect.width,
-                height: rect.height,
-              },
-              title,
-            }
-          : undefined,
-      );
-    },
-    [href, title, navigate],
-  );
-
-  return { ref, onClick };
-}
-
-/**
- * Plain pixel dissolve, same as every other link on the site — not the morph
- * StashBanner uses. Case studies used to morph too, but that read as a
- * different transition entirely rather than a variant of the same one.
+ * Plain pixel dissolve, same as every other link on the site. This and
+ * StashBanner both used to morph instead; that read as a different
+ * transition entirely rather than a variant of the same one.
  */
 function WorkCard({ entry, index }: { entry: WorkEntry; index: number }) {
   // Magnetic lives on the arrow, not the card: useMagnetic scales pull by
@@ -137,21 +91,16 @@ function WorkCard({ entry, index }: { entry: WorkEntry; index: number }) {
 
 /**
  * Wider and image-forward, with no metric line — it should read as "the
- * creative showcase", not "a third case study".
+ * creative showcase", not "a third case study". Navigation itself is the
+ * same plain pixel dissolve as the cards above.
  */
 function StashBanner() {
   const arrowRef = useRef<HTMLSpanElement>(null);
   useMagnetic(arrowRef);
-  const { ref, onClick } = useMorphClick(STASH.href, STASH.title);
 
   return (
     <div data-work-card>
-      <Link
-        ref={ref}
-        href={STASH.href}
-        className={styles.stashCard}
-        onClick={onClick}
-      >
+      <TransitionLink href={STASH.href} className={styles.stashCard}>
         {/* Quotes Stash's own per-SKU palette — the one visual cue that this
             is a brand, not a metric. */}
         <span className={styles.stashSwatch} aria-hidden="true" />
@@ -175,7 +124,7 @@ function StashBanner() {
         <span ref={arrowRef} className={styles.stashArrow} aria-hidden="true">
           →
         </span>
-      </Link>
+      </TransitionLink>
     </div>
   );
 }
